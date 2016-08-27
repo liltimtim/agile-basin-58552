@@ -12,13 +12,21 @@ if (!databaseUri) {
 }
 
 var api = new ParseServer({
-  databaseURI: databaseUri || 'mongodb://heroku_66mrm91m:5qevhrs5imbqfr6v7hae2jgvir@ds023644.mlab.com:23644/heroku_66mrm91m',
+  databaseURI: databaseUri || 'mongodb://heroku_2rxcw0hz:9v4vn9ounu92kg46mm9c2d1fat@ds013956.mlab.com:13956/heroku_2rxcw0hz',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
   appId: process.env.APP_ID || 'bra',
   masterKey: process.env.MASTER_KEY || 'Timoshii1!', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
-    classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
+    classNames: [] // List of classes to support for query subscriptions
+  },
+  emailAdapter: {
+    module: 'parse-server-simple-mailgun-adapter',
+    options: {
+      fromAddress: 'test@test.com',
+      domain: 'purplepanda.com',
+      apiKey: 'key-2ab74683afc2e01ab2814713eae4ffba'
+    }
   }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
