@@ -12,7 +12,7 @@ Parse.Cloud.define('submitJobRequest', function(request, response){
       from: 'Test User <test@sample.mailgun.org>',
       to: request.params.email,
       subject: 'Hello Test Heroku',
-      text: 'Test message from your heroku server'
+      text: request
     };
     mailgun.messages().send(data, function(error, body){
       console.log(body);
