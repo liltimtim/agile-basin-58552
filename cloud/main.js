@@ -9,11 +9,13 @@ Parse.Cloud.define('submitJobRequest', function(request, response){
   var params = request.params;
   if (params.requestId != null) {
     findRequestById(params.requestId).then(function(requestObject){
+      console.log(requestObject);
+      console.log(requestObject.get('email'));
       var data = {
         from: 'Test User <test@sample.mailgun.org>',
-        to: request.params.email,
+        to: requestObject.get('email'),
         subject: 'Hello Test Heroku',
-        text: request
+        text: " " + requestObject.get('email') + " " + requestObject.get('fullName') + " " + requestObject.get('contactNumber') + " " + requestObject.get('address') + " " + requestObject.get('startDate') + " " + requestObject.get('endDate') + " " + requestObject.get('projectName') + " " + requestObject.get('projectDescription')
     };
     mailgun.messages().send(data, function(error, body){
       console.log(body);
