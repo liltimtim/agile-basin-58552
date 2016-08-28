@@ -5,7 +5,7 @@ var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 
-var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
+var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI || 'mongodb://heroku_2rxcw0hz:9v4vn9ounu92kg46mm9c2d1fat@ds013956.mlab.com:13956/heroku_2rxcw0hz';
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
@@ -14,7 +14,7 @@ if (!databaseUri) {
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://heroku_2rxcw0hz:9v4vn9ounu92kg46mm9c2d1fat@ds013956.mlab.com:13956/heroku_2rxcw0hz',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
-  appId: process.env.APP_ID || 'bra',
+  appId: process.env.APP_ID || 'purple',
   masterKey: process.env.MASTER_KEY || 'Timoshii1!', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
@@ -43,9 +43,9 @@ var mountPath = process.env.PARSE_MOUNT || '/parse';
 app.use(mountPath, api);
 
 // Parse Server plays nicely with the rest of your web routes
-app.get('/', function(req, res) {
-  res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
-});
+// app.get('/', function(req, res) {
+//   res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
+// });
 
 // There will be a test page available on the /test path of your server url
 // Remove this before launching your app
