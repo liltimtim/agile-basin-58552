@@ -15,7 +15,7 @@ Parse.Cloud.define('submitJobRequest', function(request, response){
         from: 'Test User <test@sample.mailgun.org>',
         to: requestObject.get('email'),
         subject: 'Hello Test Heroku',
-        html: "<html>"+ requestObject.get('email') + " \n " + requestObject.get('fullName') + " \n" + requestObject.get('contactNumber') + " \n " + requestObject.get('address') + " " + requestObject.get('startDate') + " " + requestObject.get('endDate') + " " + requestObject.get('projectName') + " " + requestObject.get('projectDescription') +"</html>"
+        html: "<html>"+ requestObject.get('email') + " \n " + requestObject.get('fullName') + " \n" + requestObject.get('contactNumber') + " \n " + requestObject.get('address') + " " + requestObject.get('startDate') + " " + requestObject.get('projectName') + " " + requestObject.get('projectDescription') +"</html>"
     };
     mailgun.messages().send(data, function(error, body){
       console.log(body);
