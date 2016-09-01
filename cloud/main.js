@@ -13,7 +13,7 @@ Parse.Cloud.define('submitJobRequest', function(request, response){
       console.log(requestObject.get('email'));
       var data = {
         from: 'Test User <test@sample.mailgun.org>',
-        to: requestObject.get('email'),
+        to: "greg@kingstreetservices.com",
         subject: 'Hello Test Heroku',
         html: "<html>"+ requestObject.get('email') + " \n " + requestObject.get('fullName') + " \n" + requestObject.get('contactNumber') + " \n " + requestObject.get('address') + " " + requestObject.get('startDate') + " " + requestObject.get('projectName') + " " + requestObject.get('projectDescription') +"</html>"
     };
