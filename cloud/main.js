@@ -24,10 +24,7 @@ Parse.Cloud.define('submitJobRequest', function(request, response){
       } else {
         response.error(error);
       }
-    });
-      response.success(requestObject);
-    }, function(error){
-      response.error(error);
+    }); 
     });
 
     // findRequestById(params.requestId).then({
